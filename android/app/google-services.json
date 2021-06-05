@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "766934329693",
+    "project_id": "project-zora",
+    "storage_bucket": "project-zora.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766934329693:android:946d0b50d39edba07260b4",
+        "android_client_info": {
+          "package_name": "com.example.project_zora"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "766934329693-f28vhq6g87geta7n1869r1v5uurb9k3q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5iiLTiWkZ86aKxCNBPJqzhYGtahUhP2o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "766934329693-f28vhq6g87geta7n1869r1v5uurb9k3q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "766934329693-m7g5bqo5fisucig25n5lami7gjrp69ua.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.projectZora"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
