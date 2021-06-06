@@ -110,7 +110,7 @@ class _SignInState extends State<SignIn> {
                               _obscureText
                                   ? Icons.visibility
                                   : Icons.visibility_off,
-                              color: fontType,
+                              color: thotBlue,
                             ),
                             onPressed: _toggleObscureText,
                           )),
