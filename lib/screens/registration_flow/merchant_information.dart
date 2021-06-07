@@ -135,7 +135,8 @@ class RegistrationMerchantInformation extends StatelessWidget {
                   style: buttonStyle,
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
-                      Navigator.pushNamed(context, "/registrationMerchantPassword");
+                      Navigator.pushNamed(
+                          context, "/registrationMerchantPassword");
                     }
                   },
                   child: Text("Next"),

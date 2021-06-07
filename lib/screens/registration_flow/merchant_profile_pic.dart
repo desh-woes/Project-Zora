@@ -82,12 +82,14 @@ class _RegistrationProfilePicState extends State<RegistrationProfilePic> {
                 ),
               ),
               Padding(padding: const EdgeInsets.all(20)),
-              ProfilePic(imagePath: defaultImageUrl,
+              ProfilePic(
+                imagePath: defaultImageUrl,
                 press: (String val) {
                   setState(() {
                     defaultImageUrl = val;
                   });
-                },)
+                },
+              )
             ],
           ),
         ),

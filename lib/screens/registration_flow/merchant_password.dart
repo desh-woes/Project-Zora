@@ -41,8 +41,34 @@ class _RegistrationMerchantPasswordState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Container(
+              width: 30,
+              height: 25,
+              child: IconButton(
+                iconSize: 18,
+                onPressed: () => Navigator.pop(context),
+                icon: Icon(Icons.arrow_back_ios, color: fontType),
+              ),
+            ),
+            Text(
+              "Back",
+              style: TextStyle(fontSize: 14, color: fontType),
+              textAlign: TextAlign.left,
+            ),
+          ],
+        ),
+        elevation: 0.0,
+        titleSpacing: 10.0,
+        centerTitle: false,
+      ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 50.0, left: 25.0, right: 25.0),
+        padding: const EdgeInsets.only(top: 0.0, left: 25.0, right: 25.0),
         child: Form(
           key: _formKey,
           child: ListView(

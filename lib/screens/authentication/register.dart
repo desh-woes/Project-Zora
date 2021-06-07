@@ -54,7 +54,8 @@ class _RegisterState extends State<Register> {
               child: ElevatedButton(
                 style: buttonStyle,
                 onPressed: () {
-                  Navigator.pushNamed(context, "/registrationMerchantInformation");
+                  Navigator.pushNamed(
+                      context, "/registrationMerchantInformation");
                 },
                 child: Text("Sign up with Email"),
               ),

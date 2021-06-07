@@ -8,10 +8,7 @@ import 'package:project_zora/screens/registration_flow/merchant_password.dart';
 import 'package:project_zora/screens/registration_flow/merchant_profile_pic.dart';
 import 'package:project_zora/services/authentication_service.dart';
 import 'package:project_zora/shared/constants.dart';
-import 'package:project_zora/sign_in_page.dart';
 import 'package:provider/provider.dart';
-
-import 'home_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -51,7 +48,8 @@ class MyApp extends StatelessWidget {
           "/registrationMerchantInformation": (context) =>
               RegistrationMerchantInformation(),
           "/registrationProfilePic": (context) => RegistrationProfilePic(),
-          "/registrationMerchantPassword": (context) => RegistrationMerchantPassword()
+          "/registrationMerchantPassword": (context) =>
+              RegistrationMerchantPassword()
           // "/merchantViewProductPage": (context) => ViewProducts(),
           // "/searchPage": (context) => ShopperLanding(),
         },
@@ -61,17 +59,17 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class AuthenticationWrapper extends StatelessWidget {
-  const AuthenticationWrapper({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User>();
-
-    if (firebaseUser != null) {
-      return HomePage();
-    }
-
-    return SignInPage();
-  }
-}
+// class AuthenticationWrapper extends StatelessWidget {
+//   const AuthenticationWrapper({Key key}) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     final firebaseUser = context.watch<User>();
+//
+//     if (firebaseUser != null) {
+//       return HomePage();
+//     }
+//
+//     return SignInPage();
+//   }
+// }

@@ -13,7 +13,6 @@ final ButtonStyle buttonStyle = ButtonStyle(
       borderRadius: BorderRadius.circular(10.0),
     )));
 
-
 final InputDecoration registrationInputDecoration = InputDecoration(
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(10)),
