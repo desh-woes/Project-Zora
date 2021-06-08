@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:project_zora/shared/constants.dart';
 import 'package:project_zora/shared/picture_upload.dart';
+import 'package:provider/provider.dart';
 
 class RegistrationProfilePic extends StatefulWidget {
   RegistrationProfilePic({Key key}) : super(key: key);
@@ -18,6 +20,7 @@ class _RegistrationProfilePicState extends State<RegistrationProfilePic> {
 
   @override
   Widget build(BuildContext context) {
+    final firebaseUser = context.watch<User>();
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(top: 50.0, left: 25.0, right: 25.0),
@@ -90,6 +93,7 @@ class _RegistrationProfilePicState extends State<RegistrationProfilePic> {
                   style: buttonStyle,
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
+                      print(firebaseUser.uid);
                       // Not yet Implemented
                     }
                   },

@@ -58,7 +58,7 @@ class _ProfilePicState extends State<ProfilePic> {
           clipBehavior: Clip.none,
           children: [
             CircleAvatar(
-              backgroundColor: Colors.transparent,
+              backgroundColor: Color(0xFFE2E8F0),
               backgroundImage: setImage(),
             ),
             Positioned(
