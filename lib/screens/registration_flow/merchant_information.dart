@@ -136,7 +136,12 @@ class RegistrationMerchantInformation extends StatelessWidget {
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
                       Navigator.pushNamed(
-                          context, "/registrationMerchantPassword");
+                          context, "/registrationMerchantPassword",
+                          arguments: {
+                            "shopName": shopNameController.text.trim(),
+                            "emailAddress": emailController.text.trim(),
+                            "phoneNumber": phoneNumberController.text.trim()
+                          });
                     }
                   },
                   child: Text("Next"),

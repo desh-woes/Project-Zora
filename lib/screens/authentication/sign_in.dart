@@ -130,7 +130,7 @@ class _SignInState extends State<SignIn> {
 
                             dynamic result = await context
                                 .read<AuthenticationService>()
-                                .signIn(
+                                .signInWithEmailAndPassword(
                                     email: emailController.text.trim(),
                                     password: passwordController.text.trim());
                             if (result == null) {
