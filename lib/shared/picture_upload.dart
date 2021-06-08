@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:project_zora/services/file_store_image.dart';
 
 class ProfilePic extends StatefulWidget {
   final String imagePath;
@@ -39,11 +40,11 @@ class _ProfilePicState extends State<ProfilePic> {
     });
   }
 
-  Image setImage() {
+  ImageProvider setImage() {
     if (_image == null) {
-      return Image.network(widget.imagePath);
+      return NetworkImage(widget.imagePath);
     }
-    return Image.file(_image);
+    return FileImage(_image);
   }
 
   @override
@@ -53,10 +54,12 @@ class _ProfilePicState extends State<ProfilePic> {
         height: 150,
         width: 150,
         child: Stack(
+          fit: StackFit.expand,
+          clipBehavior: Clip.none,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10.0),
-              child: setImage(),
+            CircleAvatar(
+              backgroundColor: Colors.transparent,
+              backgroundImage: setImage(),
             ),
             Positioned(
               right: 10,
@@ -76,10 +79,10 @@ class _ProfilePicState extends State<ProfilePic> {
                   onPressed: () async {
                     dynamic result;
                     await getImage();
-                    // if (_image != null) {
-                    //   result = await FileStorageService(image: _image)
-                    //       .uploadPic(context, _image);
-                    // }
+                    if (_image != null) {
+                      result = await FileStorageService(image: _image)
+                          .uploadPic(context, _image);
+                    }
                     if (_image != null) {
                       print(result);
                       widget.press(result);

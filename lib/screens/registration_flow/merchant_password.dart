@@ -221,7 +221,7 @@ class _RegistrationMerchantPasswordState
                           )),
                       obscureText: _obscureText,
                     ),
-                    Padding(padding: const EdgeInsets.all(60)),
+                    Padding(padding: const EdgeInsets.only(top: 60)),
                     Container(
                       height: 50,
                       child: ElevatedButton(
@@ -249,8 +249,10 @@ class _RegistrationMerchantPasswordState
                               });
                             }
 
-                            Navigator.pushNamed(
-                                context, "/registrationProfilePic");
+                            if (result != null) {
+                              Navigator.pushNamed(
+                                  context, "/registrationProfilePic");
+                            }
                           }
                         },
                         child: Text("Next"),

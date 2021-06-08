@@ -80,7 +80,8 @@ class _RegisterState extends State<Register> {
                             ..onTap = () => widget.toggleView())
                     ]),
               ),
-            )
+            ),
+            Padding(padding: const EdgeInsets.all(15)),
           ],
         ),
       ),

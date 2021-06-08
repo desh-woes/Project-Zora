@@ -128,7 +128,7 @@ class RegistrationMerchantInformation extends StatelessWidget {
                         borderSide:
                             BorderSide(color: Colors.blue, width: 1.5))),
               ),
-              Padding(padding: const EdgeInsets.all(60)),
+              Padding(padding: const EdgeInsets.only(top: 60)),
               Container(
                 height: 50,
                 child: ElevatedButton(
@@ -147,6 +147,7 @@ class RegistrationMerchantInformation extends StatelessWidget {
                   child: Text("Next"),
                 ),
               ),
+              Padding(padding: const EdgeInsets.all(15))
             ],
           ),
         ),

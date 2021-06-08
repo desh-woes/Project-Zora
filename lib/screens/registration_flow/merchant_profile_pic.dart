@@ -11,6 +11,7 @@ class RegistrationProfilePic extends StatefulWidget {
 
 class _RegistrationProfilePicState extends State<RegistrationProfilePic> {
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController addressController = TextEditingController();
 
   String defaultImageUrl =
       "https://firebasestorage.googleapis.com/v0/b/project-zora.appspot.com/o/default_profile_pic.png?alt=media&token=6f5ef5c8-1b93-40f8-b1df-9525baf2385a";
@@ -18,34 +19,8 @@ class _RegistrationProfilePicState extends State<RegistrationProfilePic> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Container(
-              width: 30,
-              height: 25,
-              child: IconButton(
-                iconSize: 18,
-                onPressed: () => Navigator.pop(context),
-                icon: Icon(Icons.arrow_back_ios, color: fontType),
-              ),
-            ),
-            Text(
-              "Back",
-              style: TextStyle(fontSize: 14, color: fontType),
-              textAlign: TextAlign.left,
-            ),
-          ],
-        ),
-        elevation: 0.0,
-        titleSpacing: 10.0,
-        centerTitle: false,
-      ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 0.0, left: 25.0, right: 25.0),
+        padding: const EdgeInsets.only(top: 50.0, left: 25.0, right: 25.0),
         child: Form(
           key: _formKey,
           child: ListView(
@@ -89,7 +64,38 @@ class _RegistrationProfilePicState extends State<RegistrationProfilePic> {
                     defaultImageUrl = val;
                   });
                 },
-              )
+              ),
+              Padding(padding: const EdgeInsets.all(15)),
+              Text(
+                "ADDRESS",
+                style: TextStyle(
+                  color: grey,
+                  fontSize: 12,
+                ),
+              ),
+              Padding(padding: const EdgeInsets.all(5)),
+              TextFormField(
+                  controller: addressController,
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return "Please enter a valid address";
+                    }
+                    return null;
+                  },
+                  decoration: registrationInputDecoration),
+              Padding(padding: const EdgeInsets.only(top: 60)),
+              Container(
+                height: 50,
+                child: ElevatedButton(
+                  style: buttonStyle,
+                  onPressed: () {
+                    if (_formKey.currentState.validate()) {
+                      // Not yet Implemented
+                    }
+                  },
+                  child: Text("Next"),
+                ),
+              ),
             ],
           ),
         ),
