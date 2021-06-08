@@ -21,24 +21,24 @@ class _RegistrationMerchantPasswordState
 
   final _formKey = GlobalKey<FormState>();
 
-  bool _obscureText = true;
-  bool signUpFail = false;
-  bool loading = false;
-
-  // Toggles the password show status
-  void _toggleObscureText() {
-    setState(() {
-      _obscureText = !_obscureText;
-    });
-  }
-
   bool _obscureText2 = true;
   bool signUpFail2 = false;
+  bool loading = false;
 
   // Toggles the password show status
   void _toggleObscureText2() {
     setState(() {
       _obscureText2 = !_obscureText2;
+    });
+  }
+
+  bool _obscureText1 = true;
+  bool signUpFail1 = false;
+
+  // Toggles the password show status
+  void _toggleObscureText1() {
+    setState(() {
+      _obscureText1 = !_obscureText1;
     });
   }
 
@@ -121,7 +121,7 @@ class _RegistrationMerchantPasswordState
                           ),
                           children: <TextSpan>[
                             TextSpan(
-                              text: "janesmagichands@gmail.com",
+                              text: args["emailAddress"],
                               style: TextStyle(
                                   color: thotBlue,
                                   fontSize: 16,
@@ -143,7 +143,52 @@ class _RegistrationMerchantPasswordState
                       controller: initialPasswordController,
                       validator: (value) {
                         if (value.isEmpty) {
-                          return "Please enter a valid password";
+                          return "Please enter a valid password with 6 or more values";
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide:
+                                BorderSide(color: vanillaBaby, width: 1.5),
+                          ),
+                          fillColor: Colors.white,
+                          filled: true,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
+                          labelText: "Password",
+                          labelStyle: TextStyle(color: fontType),
+                          errorText:
+                              signUpFail1 ? "Password does not match" : null,
+                          suffixIcon: IconButton(
+                            iconSize: 18.0,
+                            icon: Icon(
+                              _obscureText1
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: thotBlue,
+                            ),
+                            onPressed: _toggleObscureText1,
+                          )),
+                      obscureText: _obscureText1,
+                    ),
+                    Padding(padding: const EdgeInsets.all(10)),
+                    Text(
+                      "CONFIRM PASSWORD",
+                      style: TextStyle(
+                        color: grey,
+                        fontSize: 12,
+                      ),
+                    ),
+                    Padding(padding: const EdgeInsets.all(5)),
+                    TextFormField(
+                      style: TextStyle(color: fontType),
+                      controller: finalPasswordController,
+                      validator: (value) {
+                        if (value.isEmpty || value.length < 6) {
+                          return "Please enter a valid password with 6 or more values";
                         }
                         return null;
                       },
@@ -161,7 +206,7 @@ class _RegistrationMerchantPasswordState
                           labelText: "Password",
                           labelStyle: TextStyle(color: fontType),
                           errorText: signUpFail2
-                              ? "Incorrect email or password. Could not sign in."
+                              ? "Email address already exists"
                               : null,
                           suffixIcon: IconButton(
                             iconSize: 18.0,
@@ -175,52 +220,6 @@ class _RegistrationMerchantPasswordState
                           )),
                       obscureText: _obscureText2,
                     ),
-                    Padding(padding: const EdgeInsets.all(10)),
-                    Text(
-                      "CONFIRM PASSWORD",
-                      style: TextStyle(
-                        color: grey,
-                        fontSize: 12,
-                      ),
-                    ),
-                    Padding(padding: const EdgeInsets.all(5)),
-                    TextFormField(
-                      style: TextStyle(color: fontType),
-                      controller: finalPasswordController,
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return "Please enter a valid password";
-                        }
-                        return null;
-                      },
-                      decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide:
-                                BorderSide(color: vanillaBaby, width: 1.5),
-                          ),
-                          fillColor: Colors.white,
-                          filled: true,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                          labelText: "Password",
-                          labelStyle: TextStyle(color: fontType),
-                          errorText: signUpFail
-                              ? "Incorrect email or password. Could not sign in."
-                              : null,
-                          suffixIcon: IconButton(
-                            iconSize: 18.0,
-                            icon: Icon(
-                              _obscureText
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                              color: thotBlue,
-                            ),
-                            onPressed: _toggleObscureText,
-                          )),
-                      obscureText: _obscureText,
-                    ),
                     Padding(padding: const EdgeInsets.only(top: 60)),
                     Container(
                       height: 50,
@@ -228,30 +227,37 @@ class _RegistrationMerchantPasswordState
                         style: buttonStyle,
                         onPressed: () async {
                           if (_formKey.currentState.validate()) {
-                            // Display loader while firebase sign up action is happening
-                            setState(() {
-                              loading = true;
-                            });
-
-                            dynamic result = await context
-                                .read<AuthenticationService>()
-                                .registerWithEmailAndPassword(
-                                    args["shopName"],
-                                    args["emailAddress"],
-                                    finalPasswordController.text.trim(),
-                                    args["phoneNumber"]);
-
-                            if (result == null) {
+                            // Verify that both passwords are the same
+                            if (initialPasswordController.text.trim() !=
+                                finalPasswordController.text.trim()) {
                               setState(() {
-                                loading = false;
-                                signUpFail = true;
-                                signUpFail2 = true;
+                                signUpFail1 = true;
                               });
-                            }
+                            } else {
+                              // Display loader while firebase sign up action is happening
+                              setState(() {
+                                loading = true;
+                              });
 
-                            if (result != null) {
-                              Navigator.pushNamed(
-                                  context, "/registrationProfilePic");
+                              dynamic result = await context
+                                  .read<AuthenticationService>()
+                                  .registerWithEmailAndPassword(
+                                      args["shopName"],
+                                      args["emailAddress"],
+                                      finalPasswordController.text.trim(),
+                                      args["phoneNumber"]);
+
+                              if (result == null) {
+                                setState(() {
+                                  loading = false;
+                                  signUpFail2 = true;
+                                });
+                              }
+
+                              if (result != null) {
+                                Navigator.pushNamed(
+                                    context, "/registrationProfilePic");
+                              }
                             }
                           }
                         },
