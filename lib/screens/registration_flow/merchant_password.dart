@@ -255,8 +255,10 @@ class _RegistrationMerchantPasswordState
                               }
 
                               if (result != null) {
+                                loading = false;
                                 Navigator.pushNamed(
-                                    context, "/registrationProfilePic");
+                                    context, "/registrationProfilePic",
+                                    arguments: args);
                               }
                             }
                           }

@@ -10,15 +10,11 @@ class FileStorageService {
 
   FileStorageService({this.image});
 
-  Future uploadPic(BuildContext context, File image) async {
-    Future<String> url;
+  Future<String> uploadPic(BuildContext context, File image) async {
     String fileName = basename(image.path);
     Reference firebaseStorageRef = storage.ref().child(fileName);
     UploadTask uploadTask = firebaseStorageRef.putFile(image);
-    uploadTask.then((res) {
-      url = res.ref.getDownloadURL();
-      print(url);
-    });
-    return url;
+    var imageUrl = await (await uploadTask).ref.getDownloadURL();
+    return imageUrl.toString();
   }
 }

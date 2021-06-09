@@ -77,17 +77,16 @@ class _ProfilePicState extends State<ProfilePic> {
                   ),
                   child: SvgPicture.asset("images/image_vector.svg"),
                   onPressed: () async {
-                    dynamic result;
+                    String result;
                     await getImage();
                     if (_image != null) {
+                      print("Image is not null");
                       result = await FileStorageService(image: _image)
                           .uploadPic(context, _image);
-                    }
-                    if (_image != null) {
                       print(result);
                       widget.press(result);
                     } else {
-                      print(result);
+                      print("Image is Null");
                     }
                   },
                 ),

@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:project_zora/screens/authentication/authenticate.dart';
 import 'package:project_zora/screens/landing_page.dart';
+import 'package:project_zora/screens/registration_flow/finish_registration.dart';
 import 'package:project_zora/screens/registration_flow/merchant_information.dart';
 import 'package:project_zora/screens/registration_flow/merchant_password.dart';
 import 'package:project_zora/screens/registration_flow/merchant_profile_pic.dart';
@@ -49,27 +50,11 @@ class MyApp extends StatelessWidget {
               RegistrationMerchantInformation(),
           "/registrationProfilePic": (context) => RegistrationProfilePic(),
           "/registrationMerchantPassword": (context) =>
-              RegistrationMerchantPassword()
-          // "/merchantViewProductPage": (context) => ViewProducts(),
-          // "/searchPage": (context) => ShopperLanding(),
+              RegistrationMerchantPassword(),
+          "/completeMerchantRegistration": (context) => CompleteRegistration()
         },
         home: LandingPage(),
       ),
     );
   }
 }
-
-// class AuthenticationWrapper extends StatelessWidget {
-//   const AuthenticationWrapper({Key key}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     final firebaseUser = context.watch<User>();
-//
-//     if (firebaseUser != null) {
-//       return HomePage();
-//     }
-//
-//     return SignInPage();
-//   }
-// }
