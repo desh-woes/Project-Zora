@@ -99,7 +99,9 @@ class _RegistrationProfilePicState extends State<RegistrationProfilePic> {
                       child: ElevatedButton(
                         style: buttonStyle,
                         onPressed: () async {
-                          loading = true;
+                          setState(() {
+                            loading = true;
+                          });
                           if (_formKey.currentState.validate()) {
                             print(firebaseUser.uid);
                             await DatabaseService(uid: firebaseUser.uid)
@@ -111,7 +113,9 @@ class _RegistrationProfilePicState extends State<RegistrationProfilePic> {
                                     defaultImageUrl);
                           }
 
-                          loading = false;
+                          setState(() {
+                            loading = false;
+                          });
                           Navigator.pushNamed(
                               context, "/completeMerchantRegistration");
                         },

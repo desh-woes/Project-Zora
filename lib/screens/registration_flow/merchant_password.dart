@@ -255,7 +255,9 @@ class _RegistrationMerchantPasswordState
                               }
 
                               if (result != null) {
-                                loading = false;
+                                setState(() {
+                                  loading = false;
+                                });
                                 Navigator.pushNamed(
                                     context, "/registrationProfilePic",
                                     arguments: args);
