@@ -28,7 +28,7 @@ class _ProfilePicState extends State<ProfilePic> {
     try {
       pickedImage = await ImagePicker().getImage(source: ImageSource.gallery);
     } catch (e) {
-      print(e.code);
+      print("Picking Error:" + e.code);
     }
 
     setState(() {
