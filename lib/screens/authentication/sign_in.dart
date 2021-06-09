@@ -182,7 +182,8 @@ class _SignInState extends State<SignIn> {
                                     ..onTap = () => widget.toggleView())
                             ]),
                       ),
-                    )
+                    ),
+                    Padding(padding: const EdgeInsets.all(10)),
                   ],
                 ),
               ),

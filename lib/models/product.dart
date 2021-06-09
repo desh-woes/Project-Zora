@@ -13,14 +13,14 @@ class Product {
 
   Product(
       {this.documentId,
-        this.uid,
-        this.productName,
-        this.productPrice,
-        this.onlineOrderLocation,
-        this.productImageUrl,
-        this.productStoreName,
-        this.productStoreLocation,
-        this.productDeliveryFee,
-        this.searchKey,
-        this.productStoreNumber});
+      this.uid,
+      this.productName,
+      this.productPrice,
+      this.onlineOrderLocation,
+      this.productImageUrl,
+      this.productStoreName,
+      this.productStoreLocation,
+      this.productDeliveryFee,
+      this.searchKey,
+      this.productStoreNumber});
 }

@@ -268,6 +268,7 @@ class _RegistrationMerchantPasswordState
                         child: Text("Next"),
                       ),
                     ),
+                    Padding(padding: const EdgeInsets.all(10)),
                   ],
                 ),
               ),

@@ -14,9 +14,9 @@ class MerchantData {
 
   MerchantData(
       {this.uid,
-        this.merchantName,
-        this.email,
-        this.phoneNumber,
-        this.address,
-        this.profilePictureUrl});
+      this.merchantName,
+      this.email,
+      this.phoneNumber,
+      this.address,
+      this.profilePictureUrl});
 }
