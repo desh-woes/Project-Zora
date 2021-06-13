@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:project_zora/services/authentication_service.dart';
 import 'package:project_zora/shared/constants.dart';
+import 'package:provider/provider.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({Key key}) : super(key: key);
@@ -47,7 +50,7 @@ class LandingPage extends StatelessWidget {
                           child:
                               Image.asset('images/merchant_illustration.png')),
                       Expanded(
-                          child: Text("List Products (Merchant)",
+                          child: Text("Browse Products (Shopper)",
                               style: TextStyle(fontSize: 14, color: fontType)))
                     ],
                   ),
@@ -79,7 +82,7 @@ class LandingPage extends StatelessWidget {
                           child:
                               Image.asset('images/shopper_illustration.png')),
                       Expanded(
-                          child: Text("Browse Products (Shopper)",
+                          child: Text("List Products (Merchant)",
                               style: TextStyle(fontSize: 14, color: fontType)))
                     ],
                   ),

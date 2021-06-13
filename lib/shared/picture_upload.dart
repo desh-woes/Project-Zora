@@ -5,21 +5,21 @@ import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:project_zora/services/file_store_image.dart';
 
-class ProfilePic extends StatefulWidget {
+class ProfilePicUpload extends StatefulWidget {
   final String imagePath;
   final Function(String) press;
 
-  const ProfilePic({
+  const ProfilePicUpload({
     Key key,
     @required this.imagePath,
     @required this.press,
   }) : super(key: key);
 
   @override
-  _ProfilePicState createState() => _ProfilePicState();
+  _ProfilePicUploadState createState() => _ProfilePicUploadState();
 }
 
-class _ProfilePicState extends State<ProfilePic> {
+class _ProfilePicUploadState extends State<ProfilePicUpload> {
   File _image;
 
   Future getImage() async {

@@ -139,7 +139,7 @@ class _SignInState extends State<SignIn> {
                                 loading = false;
                               });
                             } else {
-                              print("User Logged In");
+                              Navigator.pushNamed(context, "/merchantShop");
                             }
                           }
                         },

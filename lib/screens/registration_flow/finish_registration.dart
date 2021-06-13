@@ -80,8 +80,7 @@ class CompleteRegistration extends StatelessWidget {
                         fontWeight: FontWeight.bold),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
-                        // TODO: Implement "Skip for now"
-                        // Not implemented yet;
+                        Navigator.pushNamed(context, "/merchantShop");
                       }),
               ),
             ),

@@ -123,6 +123,8 @@ class RegistrationMerchantInformation extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                       borderSide: BorderSide(color: vanillaBaby, width: 1.5),
                     ),
+                    fillColor: Colors.white,
+                    filled: true,
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         borderSide:

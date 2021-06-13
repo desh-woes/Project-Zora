@@ -1,13 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:project_zora/screens/authentication/authenticate.dart';
+import 'package:project_zora/models/merchant.dart';
+import 'package:project_zora/screens/authentication/authentication_wrapper.dart';
 import 'package:project_zora/screens/landing_page.dart';
+import 'package:project_zora/screens/product_listing/merchant_profile.dart';
 import 'package:project_zora/screens/registration_flow/finish_registration.dart';
 import 'package:project_zora/screens/registration_flow/merchant_information.dart';
 import 'package:project_zora/screens/registration_flow/merchant_password.dart';
 import 'package:project_zora/screens/registration_flow/merchant_profile_pic.dart';
 import 'package:project_zora/services/authentication_service.dart';
+import 'package:project_zora/services/database_service.dart';
 import 'package:project_zora/shared/constants.dart';
 import 'package:provider/provider.dart';
 
@@ -31,7 +34,7 @@ class MyApp extends StatelessWidget {
           create: (context) =>
               context.read<AuthenticationService>().authStateChanges,
           initialData: null,
-        )
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -39,19 +42,20 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
             primarySwatch: Colors.blue,
             visualDensity: VisualDensity.adaptivePlatformDensity,
-            scaffoldBackgroundColor: softWork,
+            scaffoldBackgroundColor: vanillaBaby,
             appBarTheme: AppBarTheme(
               color: softWork,
             )),
         initialRoute: "/",
         routes: {
-          "/authenticationPage": (context) => Authenticate(),
+          "/authenticationPage": (context) => Wrapper(),
           "/registrationMerchantInformation": (context) =>
               RegistrationMerchantInformation(),
           "/registrationProfilePic": (context) => RegistrationProfilePic(),
           "/registrationMerchantPassword": (context) =>
               RegistrationMerchantPassword(),
-          "/completeMerchantRegistration": (context) => CompleteRegistration()
+          "/completeMerchantRegistration": (context) => CompleteRegistration(),
+          "/merchantShop": (context) => MerchantProfile()
         },
         home: LandingPage(),
       ),
