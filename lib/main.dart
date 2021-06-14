@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:project_zora/screens/authentication/authentication_wrapper.dart';
 import 'package:project_zora/screens/landing_page.dart';
 import 'package:project_zora/screens/product_listing/add_product.dart';
-import 'package:project_zora/screens/product_listing/merchant_profile.dart';
 import 'package:project_zora/screens/registration_flow/finish_registration.dart';
 import 'package:project_zora/screens/registration_flow/merchant_information.dart';
 import 'package:project_zora/screens/registration_flow/merchant_password.dart';
