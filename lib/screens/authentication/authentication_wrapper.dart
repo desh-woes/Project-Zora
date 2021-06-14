@@ -13,7 +13,6 @@ class Wrapper extends StatelessWidget {
     if (user == null) {
       return Authenticate();
     }
-    print(user.email);
     return MerchantLanding(
       firebaseUser: user,
     );

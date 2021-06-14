@@ -6,8 +6,8 @@ import 'package:project_zora/shared/profile_pic.dart';
 import 'package:provider/provider.dart';
 
 class MerchantProfile extends StatelessWidget {
-
   final MerchantData merchantData;
+
   MerchantProfile({this.merchantData});
 
   @override

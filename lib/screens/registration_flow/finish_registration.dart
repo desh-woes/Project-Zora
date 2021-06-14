@@ -80,7 +80,7 @@ class CompleteRegistration extends StatelessWidget {
                         fontWeight: FontWeight.bold),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
-                        Navigator.pushNamed(context, "/merchantShop");
+                        Navigator.pushNamed(context, "/authenticationPage");
                       }),
               ),
             ),

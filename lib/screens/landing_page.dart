@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:project_zora/services/authentication_service.dart';
 import 'package:project_zora/shared/constants.dart';
@@ -71,7 +70,8 @@ class LandingPage extends StatelessWidget {
                       ),
                       backgroundColor:
                           MaterialStateProperty.all<Color>(vanillaBaby)),
-                  onPressed: () {
+                  onPressed: () async {
+                    await context.read<AuthenticationService>().signOut();
                     Navigator.pushNamed(context, "/authenticationPage");
                   },
                   child: Row(
