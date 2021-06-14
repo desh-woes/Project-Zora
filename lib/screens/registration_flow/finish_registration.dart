@@ -59,11 +59,11 @@ class CompleteRegistration extends StatelessWidget {
                 style: buttonStyle.copyWith(
                     backgroundColor:
                         MaterialStateProperty.all<Color>(vanillaBaby)),
-                onPressed: () async {
-                  // Not yet implemented
+                onPressed: () {
+                  Navigator.pushNamed(context, "/addProduct");
                 },
                 child: Text(
-                  "Next",
+                  "Add Product",
                   style:
                       TextStyle(color: fontType, fontWeight: FontWeight.bold),
                 ),

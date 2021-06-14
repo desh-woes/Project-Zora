@@ -5,6 +5,7 @@ const fontType = Color(0xFF2D3748);
 const softWork = Color(0xFFFAFAFA);
 const thotBlue = Color(0xFF6EBCDD);
 const grey = Color(0xFF718096);
+const radio = Color(0xFFE2E8F0);
 
 final ButtonStyle buttonStyle = ButtonStyle(
     backgroundColor: MaterialStateProperty.all<Color>(thotBlue),

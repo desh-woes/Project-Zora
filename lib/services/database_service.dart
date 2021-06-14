@@ -36,23 +36,25 @@ class DatabaseService {
   Future updateProductCatalogue(
       String productStoreLocation,
       String productStoreName,
-      String productDeliveryFee,
       String uid,
       String productName,
       String productPrice,
-      String onlineOrderLocation,
-      String productImageUrl,
+      String productImageUrl1,
+      String productImageUrl2,
+      String productImageUrl3,
+      String productState,
       String storeNumber) async {
     return await productCollection.add({
       "productStoreLocation": productStoreLocation,
       "productStoreName": productStoreName,
-      "productDeliveryFee": productDeliveryFee,
       "uid": uid,
       "productName": productName,
       "productPrice": productPrice,
-      "onlineOrderLocation": onlineOrderLocation,
-      "productImageUrl": productImageUrl,
+      "productImageUrl1": productImageUrl1,
+      "productImageUrl2": productImageUrl2,
+      "productImageUrl3": productImageUrl3,
       "searchKey": productName[0].toUpperCase(),
+      "productState": productState,
       "productStoreNumber": storeNumber
     });
   }
