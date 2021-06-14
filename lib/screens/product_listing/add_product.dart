@@ -214,7 +214,7 @@ class _AddProductBuilderState extends State<AddProductBuilder> {
                       children: <Widget>[
                         Container(
                           height: 10,
-                          width: 10,
+                          width: 20,
                           margin: EdgeInsets.only(right: 20),
                           child: Radio(
                             fillColor:
@@ -243,7 +243,7 @@ class _AddProductBuilderState extends State<AddProductBuilder> {
                       children: <Widget>[
                         Container(
                           height: 10,
-                          width: 10,
+                          width: 20,
                           margin: EdgeInsets.only(right: 20),
                           child: Radio(
                             fillColor:
@@ -270,7 +270,7 @@ class _AddProductBuilderState extends State<AddProductBuilder> {
                       children: <Widget>[
                         Container(
                           height: 10,
-                          width: 10,
+                          width: 20,
                           margin: EdgeInsets.only(right: 20),
                           child: Radio(
                             fillColor:
