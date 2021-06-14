@@ -4,10 +4,12 @@ class Product {
   final String productName;
   final String productPrice;
   final String onlineOrderLocation;
-  final String productImageUrl;
+  final String productImageUrl1;
+  final String productImageUrl2;
+  final String productImageUrl3;
   final String productStoreName;
   final String productStoreLocation;
-  final String productDeliveryFee;
+  final String productState;
   final String searchKey;
   final String productStoreNumber;
 
@@ -17,10 +19,12 @@ class Product {
       this.productName,
       this.productPrice,
       this.onlineOrderLocation,
-      this.productImageUrl,
+      this.productImageUrl1,
+      this.productImageUrl2,
+      this.productImageUrl3,
       this.productStoreName,
       this.productStoreLocation,
-      this.productDeliveryFee,
+      this.productState,
       this.searchKey,
       this.productStoreNumber});
 }

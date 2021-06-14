@@ -102,10 +102,14 @@ class DatabaseService {
         productName: doc.data()["productName"] ?? "",
         productPrice: doc.data()["productPrice"] ?? "",
         onlineOrderLocation: doc.data()["onlineOrderLocation"] ?? "",
-        productImageUrl: doc.data()["productImageUrl"] ??
-            "https://firebasestorage.googleapis.com/v0/b/loketa-project.appspot.com/o/default_Product_image.png?alt=media&token=24d3be4b-14cc-447c-aaf3-899db733afa3",
+        productImageUrl1: doc.data()["productImageUrl1"] ??
+            "https://firebasestorage.googleapis.com/v0/b/project-zora.appspot.com/o/default_profile_pic.png?alt=media&token=6f5ef5c8-1b93-40f8-b1df-9525baf2385a",
+        productImageUrl2: doc.data()["productImageUrl2"] ??
+            "https://firebasestorage.googleapis.com/v0/b/project-zora.appspot.com/o/default_profile_pic.png?alt=media&token=6f5ef5c8-1b93-40f8-b1df-9525baf2385a",
+        productImageUrl3: doc.data()["productImageUrl3"] ??
+            "https://firebasestorage.googleapis.com/v0/b/project-zora.appspot.com/o/default_profile_pic.png?alt=media&token=6f5ef5c8-1b93-40f8-b1df-9525baf2385a",
         documentId: doc.id,
-        productDeliveryFee: doc.data()["productDeliveryFee"] ?? "",
+        productState: doc.data()["productState"] ?? "",
         productStoreName: doc.data()["productStoreName"] ?? "",
         productStoreLocation: doc.data()["productStoreLocation"] ?? "",
         searchKey: doc.data()["searchKey"] ?? "",
@@ -120,9 +124,13 @@ class DatabaseService {
         productName: doc["productName"] ?? "",
         productPrice: doc["productPrice"] ?? "",
         onlineOrderLocation: doc["onlineOrderLocation"] ?? "",
-        productImageUrl: doc["productImageUrl"] ??
-            "https://firebasestorage.googleapis.com/v0/b/loketa-project.appspot.com/o/default_Product_image.png?alt=media&token=24d3be4b-14cc-447c-aaf3-899db733afa3",
-        productDeliveryFee: doc["productDeliveryFee"] ?? "",
+        productImageUrl1: doc["productImageUrl1"] ??
+            "https://firebasestorage.googleapis.com/v0/b/project-zora.appspot.com/o/default_profile_pic.png?alt=media&token=6f5ef5c8-1b93-40f8-b1df-9525baf2385a",
+        productImageUrl2: doc["productImageUrl2"] ??
+            "https://firebasestorage.googleapis.com/v0/b/project-zora.appspot.com/o/default_profile_pic.png?alt=media&token=6f5ef5c8-1b93-40f8-b1df-9525baf2385a",
+        productImageUrl3: doc["productImageUrl1"] ??
+            "https://firebasestorage.googleapis.com/v0/b/project-zora.appspot.com/o/default_profile_pic.png?alt=media&token=6f5ef5c8-1b93-40f8-b1df-9525baf2385a",
+        productState: doc["productState"] ?? "",
         productStoreName: doc["productStoreName"] ?? "",
         productStoreLocation: doc["productStoreLocation"] ?? "",
         searchKey: doc["searchKey"] ?? "",

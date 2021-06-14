@@ -25,3 +25,7 @@ final InputDecoration registrationInputDecoration = InputDecoration(
     border: OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(10)),
     ));
+
+final TextStyle detailsStyle = TextStyle(
+  color: fontType.withOpacity(0.85),
+);
