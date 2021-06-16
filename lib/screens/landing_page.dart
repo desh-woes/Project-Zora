@@ -4,18 +4,17 @@ import 'package:project_zora/shared/constants.dart';
 import 'package:provider/provider.dart';
 
 class LandingPage extends StatelessWidget {
-  const LandingPage({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height * 0.4;
     return Scaffold(
       backgroundColor: softWork,
       body: Center(
         child: Container(
-          margin: const EdgeInsets.only(left: 40.0, right: 40.0),
+          margin: EdgeInsets.only(left: 40.0, right: 40.0),
           child: ListView(
             children: <Widget>[
-              Padding(padding: const EdgeInsets.all(170)),
+              Padding(padding: EdgeInsets.only(top: height)),
               Center(
                   child: Text(
                 "I'm here to",

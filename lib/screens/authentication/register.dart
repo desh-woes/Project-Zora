@@ -35,8 +35,12 @@ class _RegisterState extends State<Register> {
                       }),
               ),
             ),
+            Padding(padding: const EdgeInsets.all(5)),
             Image.asset(
               "images/merchant_illustration_register.png",
+              height: MediaQuery.of(context).size.height * 0.3,
+              width: double.infinity,
+              fit: BoxFit.contain,
             ),
             Padding(padding: const EdgeInsets.all(35)),
             Text(

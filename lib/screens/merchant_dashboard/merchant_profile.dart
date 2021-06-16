@@ -61,7 +61,7 @@ class MerchantProfile extends StatelessWidget {
             Padding(padding: const EdgeInsets.all(5)),
             Container(
                 constraints: BoxConstraints(
-                    minHeight: MediaQuery.of(context).size.height / 5,
+                    minHeight: MediaQuery.of(context).size.height / 2,
                     minWidth: double.infinity,
                     maxHeight: MediaQuery.of(context).size.height / 2),
                 child: ViewProducts()),
@@ -121,14 +121,15 @@ class MerchantProfile extends StatelessWidget {
                   style: detailsStyle,
                 ))
               ],
-            )
+            ),
+            Padding(padding: const EdgeInsets.all(15)),
           ],
         ),
       ),
       floatingActionButton: Container(
         height: 70,
         width: 70,
-        margin: const EdgeInsets.only(right: 20.0, bottom: 20.0),
+        margin: const EdgeInsets.only(right: 20.0, bottom: 30.0),
         child: new FloatingActionButton(
           // elevation: 0.0,
           child: new Icon(Icons.add),

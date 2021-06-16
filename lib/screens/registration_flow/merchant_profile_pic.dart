@@ -28,7 +28,7 @@ class _RegistrationProfilePicState extends State<RegistrationProfilePic> {
     return loading
         ? Loading()
         : WillPopScope(
-            onWillPop: () => onWillPop(context, firebaseUser),
+            onWillPop: () => onWillPopDeleteUser(context, firebaseUser),
             child: Scaffold(
               body: Padding(
                 padding:

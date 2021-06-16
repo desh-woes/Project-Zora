@@ -1,6 +1,7 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:project_zora/models/merchant.dart';
 import 'package:project_zora/services/database_service.dart';
 import 'package:project_zora/shared/constants.dart';
@@ -43,7 +44,8 @@ class AddProductBuilder extends StatefulWidget {
 class _AddProductBuilderState extends State<AddProductBuilder> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController productNameController = TextEditingController();
-  final TextEditingController productPriceController = TextEditingController();
+  final productPriceController =
+      MoneyMaskedTextController(decimalSeparator: '.', thousandSeparator: ',');
   final snackBar = SnackBar(content: Text('Yay! A new product has been added'));
   bool loading = false;
   String defaultImageUrl = defaultUrl;
