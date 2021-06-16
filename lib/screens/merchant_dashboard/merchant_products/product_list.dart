@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project_zora/models/product.dart';
-import 'package:project_zora/screens/product_listing/merchant_products/product_tile.dart';
+import 'package:project_zora/screens/merchant_dashboard/merchant_products/product_tile.dart';
 
 class ProductList extends StatefulWidget {
   final List<Product> products;

@@ -46,8 +46,7 @@ class _AddProductBuilderState extends State<AddProductBuilder> {
   final TextEditingController productPriceController = TextEditingController();
   final snackBar = SnackBar(content: Text('Yay! A new product has been added'));
   bool loading = false;
-  String defaultImageUrl =
-      defaultUrl;
+  String defaultImageUrl = defaultUrl;
   String productImg1;
   String productImg2;
   String productImg3;

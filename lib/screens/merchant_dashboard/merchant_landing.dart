@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:project_zora/models/merchant.dart';
-import 'package:project_zora/screens/product_listing/merchant_profile.dart';
+import 'package:project_zora/screens/merchant_dashboard/merchant_profile.dart';
 import 'package:project_zora/services/database_service.dart';
 import 'package:project_zora/shared/loading.dart';
 

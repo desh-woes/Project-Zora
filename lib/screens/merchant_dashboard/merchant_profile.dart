@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project_zora/models/merchant.dart';
-import 'package:project_zora/screens/product_listing/merchant_products/view_products.dart';
+import 'package:project_zora/screens/merchant_dashboard/merchant_products/view_products.dart';
 import 'package:project_zora/shared/constants.dart';
 import 'package:project_zora/shared/profile_pic.dart';
 

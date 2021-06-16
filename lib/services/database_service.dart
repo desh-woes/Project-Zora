@@ -23,8 +23,8 @@ class DatabaseService {
     return await productCollection.doc(docId).delete();
   }
 
-  Future addMerchantData(String merchantName, String email,
-      String phoneNumber, String address, String profilePictureUrl) async {
+  Future addMerchantData(String merchantName, String email, String phoneNumber,
+      String address, String profilePictureUrl) async {
     return await merchantCollection.doc(uid).set({
       "merchantName": merchantName,
       "email": email,
@@ -103,12 +103,9 @@ class DatabaseService {
         productName: doc.data()["productName"] ?? "",
         productPrice: doc.data()["productPrice"] ?? "",
         onlineOrderLocation: doc.data()["onlineOrderLocation"] ?? "",
-        productImageUrl1: doc.data()["productImageUrl1"] ??
-            defaultUrl,
-        productImageUrl2: doc.data()["productImageUrl2"] ??
-            defaultUrl,
-        productImageUrl3: doc.data()["productImageUrl3"] ??
-            defaultUrl,
+        productImageUrl1: doc.data()["productImageUrl1"] ?? defaultUrl,
+        productImageUrl2: doc.data()["productImageUrl2"] ?? defaultUrl,
+        productImageUrl3: doc.data()["productImageUrl3"] ?? defaultUrl,
         documentId: doc.id,
         productState: doc.data()["productState"] ?? "",
         productStoreName: doc.data()["productStoreName"] ?? "",
@@ -125,12 +122,9 @@ class DatabaseService {
         productName: doc["productName"] ?? "",
         productPrice: doc["productPrice"] ?? "",
         onlineOrderLocation: doc["onlineOrderLocation"] ?? "",
-        productImageUrl1: doc["productImageUrl1"] ??
-            defaultUrl,
-        productImageUrl2: doc["productImageUrl2"] ??
-            defaultUrl,
-        productImageUrl3: doc["productImageUrl1"] ??
-            defaultUrl,
+        productImageUrl1: doc["productImageUrl1"] ?? defaultUrl,
+        productImageUrl2: doc["productImageUrl2"] ?? defaultUrl,
+        productImageUrl3: doc["productImageUrl1"] ?? defaultUrl,
         productState: doc["productState"] ?? "",
         productStoreName: doc["productStoreName"] ?? "",
         productStoreLocation: doc["productStoreLocation"] ?? "",

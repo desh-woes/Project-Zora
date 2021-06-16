@@ -18,8 +18,7 @@ class _RegistrationProfilePicState extends State<RegistrationProfilePic> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController addressController = TextEditingController();
 
-  String defaultImageUrl =
-      defaultUrl;
+  String defaultImageUrl = defaultUrl;
   bool loading = false;
 
   @override
