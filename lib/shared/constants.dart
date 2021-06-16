@@ -29,3 +29,6 @@ final InputDecoration registrationInputDecoration = InputDecoration(
 final TextStyle detailsStyle = TextStyle(
   color: fontType.withOpacity(0.85),
 );
+
+const String defaultUrl =
+    "https://firebasestorage.googleapis.com/v0/b/project-zora.appspot.com/o/default_profile_pic.png?alt=media&token=6f5ef5c8-1b93-40f8-b1df-9525baf2385a";

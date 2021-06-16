@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:project_zora/models/merchant.dart';
 import 'package:project_zora/models/product.dart';
+import 'package:project_zora/shared/constants.dart';
 
 class DatabaseService {
   final String uid;
@@ -22,7 +23,7 @@ class DatabaseService {
     return await productCollection.doc(docId).delete();
   }
 
-  Future updateMerchantData(String merchantName, String email,
+  Future addMerchantData(String merchantName, String email,
       String phoneNumber, String address, String profilePictureUrl) async {
     return await merchantCollection.doc(uid).set({
       "merchantName": merchantName,
@@ -59,7 +60,7 @@ class DatabaseService {
     });
   }
 
-  Future updateMerchantData2(String merchantName, String email,
+  Future updateMerchantData(String merchantName, String email,
       String phoneNumber, String address) async {
     return await merchantCollection.doc(uid).update({
       "merchantName": merchantName,
@@ -103,11 +104,11 @@ class DatabaseService {
         productPrice: doc.data()["productPrice"] ?? "",
         onlineOrderLocation: doc.data()["onlineOrderLocation"] ?? "",
         productImageUrl1: doc.data()["productImageUrl1"] ??
-            "https://firebasestorage.googleapis.com/v0/b/project-zora.appspot.com/o/default_profile_pic.png?alt=media&token=6f5ef5c8-1b93-40f8-b1df-9525baf2385a",
+            defaultUrl,
         productImageUrl2: doc.data()["productImageUrl2"] ??
-            "https://firebasestorage.googleapis.com/v0/b/project-zora.appspot.com/o/default_profile_pic.png?alt=media&token=6f5ef5c8-1b93-40f8-b1df-9525baf2385a",
+            defaultUrl,
         productImageUrl3: doc.data()["productImageUrl3"] ??
-            "https://firebasestorage.googleapis.com/v0/b/project-zora.appspot.com/o/default_profile_pic.png?alt=media&token=6f5ef5c8-1b93-40f8-b1df-9525baf2385a",
+            defaultUrl,
         documentId: doc.id,
         productState: doc.data()["productState"] ?? "",
         productStoreName: doc.data()["productStoreName"] ?? "",
@@ -125,11 +126,11 @@ class DatabaseService {
         productPrice: doc["productPrice"] ?? "",
         onlineOrderLocation: doc["onlineOrderLocation"] ?? "",
         productImageUrl1: doc["productImageUrl1"] ??
-            "https://firebasestorage.googleapis.com/v0/b/project-zora.appspot.com/o/default_profile_pic.png?alt=media&token=6f5ef5c8-1b93-40f8-b1df-9525baf2385a",
+            defaultUrl,
         productImageUrl2: doc["productImageUrl2"] ??
-            "https://firebasestorage.googleapis.com/v0/b/project-zora.appspot.com/o/default_profile_pic.png?alt=media&token=6f5ef5c8-1b93-40f8-b1df-9525baf2385a",
+            defaultUrl,
         productImageUrl3: doc["productImageUrl1"] ??
-            "https://firebasestorage.googleapis.com/v0/b/project-zora.appspot.com/o/default_profile_pic.png?alt=media&token=6f5ef5c8-1b93-40f8-b1df-9525baf2385a",
+            defaultUrl,
         productState: doc["productState"] ?? "",
         productStoreName: doc["productStoreName"] ?? "",
         productStoreLocation: doc["productStoreLocation"] ?? "",

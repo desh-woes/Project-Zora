@@ -19,7 +19,7 @@ class _RegistrationProfilePicState extends State<RegistrationProfilePic> {
   final TextEditingController addressController = TextEditingController();
 
   String defaultImageUrl =
-      "https://firebasestorage.googleapis.com/v0/b/project-zora.appspot.com/o/default_profile_pic.png?alt=media&token=6f5ef5c8-1b93-40f8-b1df-9525baf2385a";
+      defaultUrl;
   bool loading = false;
 
   @override
@@ -108,7 +108,7 @@ class _RegistrationProfilePicState extends State<RegistrationProfilePic> {
                             if (_formKey.currentState.validate()) {
                               print(firebaseUser.uid);
                               await DatabaseService(uid: firebaseUser.uid)
-                                  .updateMerchantData(
+                                  .addMerchantData(
                                       args["shopName"],
                                       args["emailAddress"],
                                       args["phoneNumber"],
