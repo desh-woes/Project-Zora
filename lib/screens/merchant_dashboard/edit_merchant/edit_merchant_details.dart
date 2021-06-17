@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:project_zora/models/merchant.dart';
+import 'package:project_zora/services/authentication_service.dart';
 import 'package:project_zora/services/database_service.dart';
 import 'package:project_zora/shared/constants.dart';
 import 'package:project_zora/shared/loading.dart';
@@ -20,30 +21,68 @@ class EditMerchantDetails extends StatefulWidget {
 }
 
 class _EditMerchantDetailsState extends State<EditMerchantDetails> {
+  // Form Keys
   final _editDetailsFormKey = GlobalKey<FormState>();
   final _changePasswordFormKey = GlobalKey<FormState>();
+
+  // Default phone number country
   final PhoneNumber number = PhoneNumber(isoCode: 'RW');
+
+  // Snack bar for when information has been successfully updated
   final snackBar =
       SnackBar(content: Text('Yay! Your details have been updated!!'));
 
+  // Show Visibility state booleans
   bool _showEditDetails = false;
   bool _showChangePassword = false;
+
+  // Loader boolean to confirm when to show the loader widget
   bool loading = false;
 
-  String profilePicUrl = defaultUrl;
+  // Password text controllers
+  final TextEditingController initialPasswordController =
+      TextEditingController();
+  final TextEditingController finalPasswordController = TextEditingController();
 
+  // Toggle visibility icon on first password input text field
+  bool _obscureText1 = true;
+  bool signUpFail1 = false;
+
+  // Toggles the password show status
+  void _toggleObscureText1() {
+    setState(() {
+      _obscureText1 = !_obscureText1;
+    });
+  }
+
+  // Toggle visibility icon on second password input text field
+  bool _obscureText2 = true;
+  bool signUpFail2 = false;
+
+  // Toggles the password show status
+  void _toggleObscureText2() {
+    setState(() {
+      _obscureText2 = !_obscureText2;
+    });
+  }
+
+  // Toggle visibility for edit details
   void showEditDetails() {
     setState(() {
       _showEditDetails = !_showEditDetails;
+      _showChangePassword = false;
     });
   }
 
+  // Toggle visibility for changing password details
   void showChangePassword() {
     setState(() {
       _showChangePassword = !_showChangePassword;
+      _showEditDetails = false;
     });
   }
 
+  // Helper function to help set new image url
   String setImageUrl(String newImageUrl, String oldImageUrl) {
     print("New URL: " + newImageUrl);
     print("Old URL: " + oldImageUrl);
@@ -121,7 +160,7 @@ class _EditMerchantDetailsState extends State<EditMerchantDetails> {
               children: <Widget>[
                 Padding(padding: const EdgeInsets.all(3)),
                 EditDetailsWidget(
-                    iconPath: "images/business_name.svg",
+                    iconPath: "images/editDetails.svg",
                     displayText: "Edit Details",
                     press: () => showEditDetails()),
                 Visibility(
@@ -266,7 +305,189 @@ class _EditMerchantDetailsState extends State<EditMerchantDetails> {
                       ),
                     ),
                   ),
-                )
+                ),
+                Padding(padding: const EdgeInsets.all(3)),
+                EditDetailsWidget(
+                  iconPath: "images/changePassword.svg",
+                  displayText: "Change Password",
+                  press: () => showChangePassword(),
+                ),
+                Visibility(
+                  visible: _showChangePassword,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        top: 10.0, left: 25.0, right: 25.0),
+                    child: Form(
+                      key: _changePasswordFormKey,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            "CREATE PASSWORD",
+                            style: TextStyle(
+                              color: grey,
+                              fontSize: 12,
+                            ),
+                          ),
+                          Padding(padding: const EdgeInsets.all(5)),
+                          TextFormField(
+                            style: TextStyle(color: fontType),
+                            controller: initialPasswordController,
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return "Please enter a valid password with 6 or more values";
+                              }
+                              return null;
+                            },
+                            decoration: InputDecoration(
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide: BorderSide(
+                                      color: vanillaBaby, width: 1.5),
+                                ),
+                                fillColor: Colors.white,
+                                filled: true,
+                                border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                ),
+                                labelText: "Password",
+                                labelStyle: TextStyle(color: fontType),
+                                errorText: signUpFail1
+                                    ? "Password does not match"
+                                    : null,
+                                suffixIcon: IconButton(
+                                  iconSize: 18.0,
+                                  icon: Icon(
+                                    _obscureText1
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                    color: thotBlue,
+                                  ),
+                                  onPressed: _toggleObscureText1,
+                                )),
+                            obscureText: _obscureText1,
+                          ),
+                          Padding(padding: const EdgeInsets.all(10)),
+                          Text(
+                            "CONFIRM PASSWORD",
+                            style: TextStyle(
+                              color: grey,
+                              fontSize: 12,
+                            ),
+                          ),
+                          Padding(padding: const EdgeInsets.all(5)),
+                          TextFormField(
+                            style: TextStyle(color: fontType),
+                            controller: finalPasswordController,
+                            validator: (value) {
+                              if (value.isEmpty || value.length < 6) {
+                                return "Please enter a valid password with 6 or more values";
+                              }
+                              return null;
+                            },
+                            decoration: InputDecoration(
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide: BorderSide(
+                                      color: vanillaBaby, width: 1.5),
+                                ),
+                                fillColor: Colors.white,
+                                filled: true,
+                                border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                ),
+                                labelText: "Password",
+                                labelStyle: TextStyle(color: fontType),
+                                errorText: signUpFail2
+                                    ? "Password can't be changed"
+                                    : null,
+                                suffixIcon: IconButton(
+                                  iconSize: 18.0,
+                                  icon: Icon(
+                                    _obscureText2
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                    color: thotBlue,
+                                  ),
+                                  onPressed: _toggleObscureText2,
+                                )),
+                            obscureText: _obscureText2,
+                          ),
+                          Padding(padding: const EdgeInsets.all(10)),
+                          Container(
+                            height: 50,
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              style: buttonStyle,
+                              onPressed: () async {
+                                if (_changePasswordFormKey.currentState
+                                    .validate()) {
+                                  if (initialPasswordController.text.trim() !=
+                                      finalPasswordController.text.trim()) {
+                                    setState(() {
+                                      signUpFail1 = true;
+                                      signUpFail2 = false;
+                                    });
+                                  } else {
+                                    setState(() {
+                                      loading = true;
+                                    });
+                                    firebaseUser
+                                        .updatePassword(
+                                            finalPasswordController.text.trim())
+                                        .then((_) {
+                                      setState(() {
+                                        loading = false;
+                                      });
+                                      showChangePassword();
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(snackBar);
+                                    }).catchError((e) {
+                                      print("Password can't be changed" +
+                                          e.toString());
+                                      setState(() {
+                                        loading = false;
+                                        signUpFail1 = false;
+                                        signUpFail2 = true;
+                                      });
+                                    });
+                                  }
+                                }
+                              },
+                              child: Text("Save"),
+                            ),
+                          ),
+                          Padding(padding: const EdgeInsets.all(10)),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(padding: const EdgeInsets.all(3)),
+                EditDetailsWidget(
+                  iconPath: "images/shopper.svg",
+                  displayText: "Switch to shopper",
+                  press: () {
+                    Navigator.of(context)
+                        .pushNamedAndRemoveUntil('/', ModalRoute.withName('/'));
+                  },
+                ),
+                Padding(padding: const EdgeInsets.all(3)),
+                EditDetailsWidget(
+                  iconPath: "images/logOut.svg",
+                  displayText: "Log Out",
+                  press: () async {
+                    Navigator.of(context)
+                        .pushNamedAndRemoveUntil("/", ModalRoute.withName('/'));
+
+                    await context.read<AuthenticationService>().signOut();
+                  },
+                ),
               ],
             ),
           );
@@ -295,7 +516,10 @@ class EditDetailsWidget extends StatelessWidget {
         color: Colors.white,
         child: Row(
           children: <Widget>[
-            SvgPicture.asset(iconPath),
+            SvgPicture.asset(
+              iconPath,
+              width: 14,
+            ),
             Padding(padding: const EdgeInsets.all(10)),
             Expanded(
                 child: Text(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_zora/shared/constants.dart';
 
 class ProfilePic extends StatelessWidget {
   final String imagePath;
@@ -15,7 +16,7 @@ class ProfilePic extends StatelessWidget {
         height: 35,
         width: 35,
         child: CircleAvatar(
-          backgroundColor: Colors.transparent,
+          backgroundColor: radio,
           backgroundImage: NetworkImage(imagePath),
         ),
       ),

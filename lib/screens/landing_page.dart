@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_zora/services/authentication_service.dart';
 import 'package:project_zora/shared/constants.dart';
-import 'package:provider/provider.dart';
 
 class LandingPage extends StatelessWidget {
   @override
@@ -69,8 +67,7 @@ class LandingPage extends StatelessWidget {
                       ),
                       backgroundColor:
                           MaterialStateProperty.all<Color>(vanillaBaby)),
-                  onPressed: () async {
-                    await context.read<AuthenticationService>().signOut();
+                  onPressed: () {
                     Navigator.pushNamed(context, "/authenticationPage");
                   },
                   child: Row(

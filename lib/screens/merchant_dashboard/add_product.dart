@@ -63,8 +63,19 @@ class _AddProductBuilderState extends State<AddProductBuilder> {
               automaticallyImplyLeading: false,
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Container(
+                    width: 30,
+                    height: 25,
+                    child: Align(
+                      child: IconButton(
+                        iconSize: 18,
+                        onPressed: () => Navigator.pop(context),
+                        icon: Icon(Icons.arrow_back_ios, color: fontType),
+                      ),
+                    ),
+                  ),
                   Padding(padding: const EdgeInsets.only(left: 15.0)),
                   Expanded(
                     child: Row(
