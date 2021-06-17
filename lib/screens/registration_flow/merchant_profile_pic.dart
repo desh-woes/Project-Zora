@@ -101,11 +101,10 @@ class _RegistrationProfilePicState extends State<RegistrationProfilePic> {
                         child: ElevatedButton(
                           style: buttonStyle,
                           onPressed: () async {
-                            setState(() {
-                              loading = true;
-                            });
                             if (_formKey.currentState.validate()) {
-                              print(firebaseUser.uid);
+                              setState(() {
+                                loading = true;
+                              });
                               await DatabaseService(uid: firebaseUser.uid)
                                   .addMerchantData(
                                       args["shopName"],
@@ -113,13 +112,12 @@ class _RegistrationProfilePicState extends State<RegistrationProfilePic> {
                                       args["phoneNumber"],
                                       addressController.text.trim(),
                                       defaultImageUrl);
+                              setState(() {
+                                loading = false;
+                              });
+                              Navigator.pushNamed(
+                                  context, "/completeMerchantRegistration");
                             }
-
-                            setState(() {
-                              loading = false;
-                            });
-                            Navigator.pushNamed(
-                                context, "/completeMerchantRegistration");
                           },
                           child: Text("Next"),
                         ),

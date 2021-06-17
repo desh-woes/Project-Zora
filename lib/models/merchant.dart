@@ -19,4 +19,15 @@ class MerchantData {
       this.phoneNumber,
       this.address,
       this.profilePictureUrl});
+
+  Map<String, dynamic> toMap() {
+    return {
+      "uid": uid,
+      "merchantName": merchantName,
+      "email": email,
+      "phoneNumber": phoneNumber,
+      "address": address,
+      "profilePictureUrl": profilePictureUrl
+    };
+  }
 }

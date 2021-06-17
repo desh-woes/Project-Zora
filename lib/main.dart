@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:project_zora/screens/authentication/authentication_wrapper.dart';
 import 'package:project_zora/screens/landing_page.dart';
 import 'package:project_zora/screens/merchant_dashboard/add_product.dart';
+import 'package:project_zora/screens/merchant_dashboard/edit_merchant/edit_merchant_landing.dart';
 import 'package:project_zora/screens/registration_flow/finish_registration.dart';
 import 'package:project_zora/screens/registration_flow/merchant_information.dart';
 import 'package:project_zora/screens/registration_flow/merchant_password.dart';
@@ -53,7 +54,8 @@ class MyApp extends StatelessWidget {
           "/registrationMerchantPassword": (context) =>
               RegistrationMerchantPassword(),
           "/completeMerchantRegistration": (context) => CompleteRegistration(),
-          "/addProduct": (context) => AddProduct()
+          "/addProduct": (context) => AddProduct(),
+          "/editMerchantDetails": (context) => EditMerchantLanding()
         },
         home: LandingPage(),
       ),

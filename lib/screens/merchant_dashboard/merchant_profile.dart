@@ -8,7 +8,7 @@ import 'package:project_zora/shared/profile_pic.dart';
 class MerchantProfile extends StatelessWidget {
   final MerchantData merchantData;
 
-  MerchantProfile({this.merchantData});
+  MerchantProfile({@required this.merchantData});
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +33,14 @@ class MerchantProfile extends StatelessWidget {
                         fontWeight: FontWeight.bold),
                     textAlign: TextAlign.left,
                   ),
-                  ProfilePic(
-                    imagePath: merchantData.profilePictureUrl,
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, "/editMerchantDetails",
+                          arguments: merchantData.toMap());
+                    },
+                    child: ProfilePic(
+                      imagePath: merchantData.profilePictureUrl,
+                    ),
                   )
                 ],
               ),
