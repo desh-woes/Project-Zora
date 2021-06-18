@@ -54,7 +54,7 @@ class DatabaseService {
       "productImageUrl1": productImageUrl1,
       "productImageUrl2": productImageUrl2,
       "productImageUrl3": productImageUrl3,
-      "searchKey": productName[0].toUpperCase(),
+      "searchKey": productName[0].toLowerCase(),
       "productState": productState,
       "productStoreNumber": storeNumber
     });
@@ -141,7 +141,7 @@ class DatabaseService {
     return FirebaseFirestore.instance
         .collection('Products')
         .where('searchKey',
-            isEqualTo: searchField.substring(0, 1).toUpperCase())
+            isEqualTo: searchField.substring(0, 1))
         .get();
   }
 }

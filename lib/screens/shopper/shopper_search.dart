@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project_zora/models/product.dart';
 import 'package:project_zora/screens/shopper/shopper_search_tile.dart';
 import 'package:project_zora/shared/constants.dart';
@@ -15,9 +16,24 @@ class ShopperSearch extends StatelessWidget {
         padding: const EdgeInsets.all(30.0),
         child: ListView(
           children: <Widget>[
-            Text(
-              "Welcome!",
-              style: TextStyle(color: fontType, fontWeight: FontWeight.w600),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Welcome!",
+                  style:
+                      TextStyle(color: fontType, fontWeight: FontWeight.w600),
+                ),
+                IconButton(
+                  icon: SvgPicture.asset(
+                    "images/switch_to_shopper.svg",
+                  ),
+                  onPressed: () {
+                    Navigator.of(context)
+                        .pushNamedAndRemoveUntil("/", ModalRoute.withName('/'));
+                  },
+                ),
+              ],
             ),
             Padding(padding: const EdgeInsets.all(25)),
             Container(
@@ -62,7 +78,7 @@ class ShopperSearch extends StatelessWidget {
                   Expanded(
                       child: TextField(
                     onTap: () {
-                      // Not yet Implemented
+                      Navigator.pushNamed(context, "/searchBar");
                     },
                     style: TextStyle(fontSize: 18),
                     decoration: InputDecoration(
@@ -82,20 +98,42 @@ class ShopperSearch extends StatelessWidget {
                   fontWeight: FontWeight.w600),
             ),
             // Padding(padding: const EdgeInsets.all(5)),
-            MediaQuery.removePadding(
-              context: context,
-              removeTop: true,
-              child: ListView.builder(
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                itemCount: products.length,
-                itemBuilder: (context, index) {
-                  return ShopperSearchTile(
-                    product: products[index],
-                  );
-                },
-              ),
-            )
+            if (products.length > 0)
+              MediaQuery.removePadding(
+                context: context,
+                removeTop: true,
+                child: ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  itemCount: products.length,
+                  itemBuilder: (context, index) {
+                    return ShopperSearchTile(
+                      product: products[index],
+                    );
+                  },
+                ),
+              )
+            else
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset("images/no_search_result.png"),
+                  Center(
+                    child: Text(
+                      "Ooops!\nNo one has added a product",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        height: 1.5,
+                        fontSize: 16,
+                        color: fontType.withOpacity(0.85),
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  )
+                ],
+              )
           ],
         ),
       ),
