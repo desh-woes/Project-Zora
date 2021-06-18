@@ -2,18 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:project_zora/models/product.dart';
 import 'package:project_zora/shared/constants.dart';
 
-class ProductTile extends StatelessWidget {
+class ShopperSearchTile extends StatelessWidget {
   final Product product;
 
-  ProductTile({this.product});
+  const ShopperSearchTile({Key key, @required this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        margin: EdgeInsets.only(top: 10),
-        height: 60,
+    return InkWell(
+      onTap: () {
+        // Not yet Implemented
+      },
+      child: Container(
+        margin: EdgeInsets.only(top: 20),
+        height: 90,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
+            borderRadius: BorderRadius.all(Radius.circular(15)),
             color: Colors.white),
         child: Row(
           children: [
@@ -21,7 +25,7 @@ class ProductTile extends StatelessWidget {
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(5), bottomLeft: Radius.circular(5)),
               child: Container(
-                width: 80,
+                width: 100,
                 height: double.infinity,
                 child: FittedBox(
                   fit: BoxFit.cover,
@@ -43,12 +47,10 @@ class ProductTile extends StatelessWidget {
                 ),
               ),
             ),
-
-            Padding(padding: const EdgeInsets.all(5)),
             //  content
             Expanded(
                 child: Container(
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.only(left: 20, top: 12, bottom: 12),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -56,10 +58,20 @@ class ProductTile extends StatelessWidget {
                         Text(
                           product.productName,
                           style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                              color: fontType),
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                              color: fontType.withOpacity(0.75)),
                         ),
+                        Padding(padding: const EdgeInsets.only(bottom: 3)),
+                        //
+                        Text(
+                          product.productStoreName,
+                          style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w400,
+                              color: fontType.withOpacity(0.5)),
+                        ),
+                        Padding(padding: const EdgeInsets.only(bottom: 3)),
                         // price
                         Expanded(
                           child: Column(
@@ -68,8 +80,10 @@ class ProductTile extends StatelessWidget {
                               Text(
                                 "RWF ${product.productPrice}",
                                 style: TextStyle(
-                                    fontSize: 14,
-                                    color: fontType.withOpacity(0.5)),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: fontType,
+                                ),
                               )
                             ],
                           ),
@@ -77,6 +91,8 @@ class ProductTile extends StatelessWidget {
                       ],
                     )))
           ],
-        ));
+        ),
+      ),
+    );
   }
 }

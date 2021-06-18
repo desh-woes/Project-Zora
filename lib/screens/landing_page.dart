@@ -36,7 +36,7 @@ class LandingPage extends StatelessWidget {
                       backgroundColor:
                           MaterialStateProperty.all<Color>(vanillaBaby)),
                   onPressed: () {
-                    // Not yet implemented
+                    Navigator.pushNamed(context, "/shopperLanding");
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

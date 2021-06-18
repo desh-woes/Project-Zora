@@ -89,7 +89,10 @@ class MerchantProfile extends StatelessWidget {
                     child: Text(
                   merchantData.merchantName,
                   style: detailsStyle,
-                ))
+                )),
+                Padding(
+                    padding: EdgeInsets.only(
+                        right: MediaQuery.of(context).size.width / 5.5))
               ],
             ),
             Padding(padding: const EdgeInsets.all(5)),
@@ -101,7 +104,10 @@ class MerchantProfile extends StatelessWidget {
                     child: Text(
                   merchantData.email,
                   style: detailsStyle,
-                ))
+                )),
+                Padding(
+                    padding: EdgeInsets.only(
+                        right: MediaQuery.of(context).size.width / 5.5))
               ],
             ),
             Padding(padding: const EdgeInsets.all(5)),
@@ -113,7 +119,10 @@ class MerchantProfile extends StatelessWidget {
                     child: Text(
                   merchantData.phoneNumber,
                   style: detailsStyle,
-                ))
+                )),
+                Padding(
+                    padding: EdgeInsets.only(
+                        right: MediaQuery.of(context).size.width / 5.5))
               ],
             ),
             Padding(padding: const EdgeInsets.all(5)),
@@ -125,7 +134,10 @@ class MerchantProfile extends StatelessWidget {
                     child: Text(
                   merchantData.address,
                   style: detailsStyle,
-                ))
+                )),
+                Padding(
+                    padding: EdgeInsets.only(
+                        right: MediaQuery.of(context).size.width / 5.5))
               ],
             ),
             Padding(padding: const EdgeInsets.all(15)),
