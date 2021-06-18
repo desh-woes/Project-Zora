@@ -3,7 +3,7 @@ class Product {
   final String uid;
   final String productName;
   final String productPrice;
-  final String onlineOrderLocation;
+  final String productDescription;
   final String productImageUrl1;
   final String productImageUrl2;
   final String productImageUrl3;
@@ -18,7 +18,7 @@ class Product {
       this.uid,
       this.productName,
       this.productPrice,
-      this.onlineOrderLocation,
+      this.productDescription,
       this.productImageUrl1,
       this.productImageUrl2,
       this.productImageUrl3,

@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
           "/addProduct": (context) => AddProduct(),
           "/editMerchantDetails": (context) => EditMerchantLanding(),
           "/shopperLanding": (context) => ShopperLanding(),
-          "/searchBar" : (context) => SearchBar()
+          "/searchBar": (context) => SearchBar()
         },
         home: LandingPage(),
       ),

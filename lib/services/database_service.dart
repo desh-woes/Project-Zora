@@ -40,6 +40,7 @@ class DatabaseService {
       String uid,
       String productName,
       String productPrice,
+      String productDescription,
       String productImageUrl1,
       String productImageUrl2,
       String productImageUrl3,
@@ -51,6 +52,7 @@ class DatabaseService {
       "uid": uid,
       "productName": productName,
       "productPrice": productPrice,
+      "productDescription": productDescription,
       "productImageUrl1": productImageUrl1,
       "productImageUrl2": productImageUrl2,
       "productImageUrl3": productImageUrl3,
@@ -102,7 +104,7 @@ class DatabaseService {
         uid: doc.data()["uid"] ?? "",
         productName: doc.data()["productName"] ?? "",
         productPrice: doc.data()["productPrice"] ?? "",
-        onlineOrderLocation: doc.data()["onlineOrderLocation"] ?? "",
+        productDescription: doc.data()["productDescription"] ?? "",
         productImageUrl1: doc.data()["productImageUrl1"] ?? defaultUrl,
         productImageUrl2: doc.data()["productImageUrl2"] ?? defaultUrl,
         productImageUrl3: doc.data()["productImageUrl3"] ?? defaultUrl,
@@ -121,7 +123,7 @@ class DatabaseService {
         uid: doc["uid"] ?? "",
         productName: doc["productName"] ?? "",
         productPrice: doc["productPrice"] ?? "",
-        onlineOrderLocation: doc["onlineOrderLocation"] ?? "",
+        productDescription: doc["productDescription"] ?? "",
         productImageUrl1: doc["productImageUrl1"] ?? defaultUrl,
         productImageUrl2: doc["productImageUrl2"] ?? defaultUrl,
         productImageUrl3: doc["productImageUrl1"] ?? defaultUrl,
@@ -140,8 +142,7 @@ class DatabaseService {
   Future searchByName(String searchField) {
     return FirebaseFirestore.instance
         .collection('Products')
-        .where('searchKey',
-            isEqualTo: searchField.substring(0, 1))
+        .where('searchKey', isEqualTo: searchField.substring(0, 1))
         .get();
   }
 }

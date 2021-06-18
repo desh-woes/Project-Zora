@@ -44,6 +44,8 @@ class AddProductBuilder extends StatefulWidget {
 class _AddProductBuilderState extends State<AddProductBuilder> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController productNameController = TextEditingController();
+  final TextEditingController productDescriptionController =
+      TextEditingController();
   final productPriceController =
       MoneyMaskedTextController(decimalSeparator: '.', thousandSeparator: ',');
   final snackBar = SnackBar(content: Text('Yay! A new product has been added'));
@@ -177,6 +179,31 @@ class _AddProductBuilderState extends State<AddProductBuilder> {
                               });
                             }),
                       ],
+                    ),
+                    Padding(padding: const EdgeInsets.all(20)),
+                    Text(
+                      "Product Description",
+                      style: TextStyle(
+                        color: grey,
+                        fontSize: 14,
+                      ),
+                    ),
+                    Padding(padding: const EdgeInsets.all(5)),
+                    TextFormField(
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return "Please enter a brief product description";
+                        }
+                        return null;
+                      },
+                      controller: productDescriptionController,
+                      keyboardType: TextInputType.multiline,
+                      minLines: 1,
+                      //Normal textInputField will be displayed
+                      maxLines: 5,
+                      decoration: registrationInputDecoration.copyWith(
+                          hintText:
+                              "Please describe the product and its features"),
                     ),
                     Padding(padding: const EdgeInsets.all(20)),
                     Text(
@@ -323,25 +350,27 @@ class _AddProductBuilderState extends State<AddProductBuilder> {
                               widget.user.uid,
                               productNameController.text.trim(),
                               productPriceController.text.trim(),
+                              productDescriptionController.text.trim(),
                               productImg1,
                               productImg2,
                               productImg3,
                               productState,
                               widget.merchantData.phoneNumber,
                             );
+
+                            setState(() {
+                              loading = false;
+                            });
+
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
+
+                            Future.delayed(Duration(seconds: 1), () {
+                              // 5s over, navigate to a new page
+                              Navigator.popAndPushNamed(
+                                  context, "/authenticationPage");
+                            });
                           }
-
-                          setState(() {
-                            loading = false;
-                          });
-
-                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-
-                          Future.delayed(Duration(seconds: 2), () {
-                            // 5s over, navigate to a new page
-                            Navigator.popAndPushNamed(
-                                context, "/authenticationPage");
-                          });
                         },
                         child: Text("Next"),
                       ),
