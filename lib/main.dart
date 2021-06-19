@@ -9,6 +9,7 @@ import 'package:project_zora/screens/registration_flow/finish_registration.dart'
 import 'package:project_zora/screens/registration_flow/merchant_information.dart';
 import 'package:project_zora/screens/registration_flow/merchant_password.dart';
 import 'package:project_zora/screens/registration_flow/merchant_profile_pic.dart';
+import 'package:project_zora/screens/shopper/display_prod.dart';
 import 'package:project_zora/screens/shopper/shopper_landing.dart';
 import 'package:project_zora/screens/shopper/shopper_search_bar.dart';
 import 'package:project_zora/services/authentication_service.dart';
@@ -59,7 +60,8 @@ class MyApp extends StatelessWidget {
           "/addProduct": (context) => AddProduct(),
           "/editMerchantDetails": (context) => EditMerchantLanding(),
           "/shopperLanding": (context) => ShopperLanding(),
-          "/searchBar": (context) => SearchBar()
+          "/searchBar": (context) => SearchBar(),
+          "/displayProductPage": (context) => DisplayProductPage()
         },
         home: LandingPage(),
       ),

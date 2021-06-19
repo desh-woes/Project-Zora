@@ -473,8 +473,7 @@ class _EditMerchantDetailsState extends State<EditMerchantDetails> {
                   iconPath: "images/shopper.svg",
                   displayText: "Switch to shopper",
                   press: () {
-                    Navigator.of(context)
-                        .pushNamedAndRemoveUntil('/', ModalRoute.withName('/'));
+                    Navigator.of(context).popUntil(ModalRoute.withName('/'));
                   },
                 ),
                 Padding(padding: const EdgeInsets.all(3)),
@@ -482,8 +481,7 @@ class _EditMerchantDetailsState extends State<EditMerchantDetails> {
                   iconPath: "images/logOut.svg",
                   displayText: "Log Out",
                   press: () async {
-                    Navigator.of(context)
-                        .pushNamedAndRemoveUntil("/", ModalRoute.withName('/'));
+                    Navigator.of(context).popUntil(ModalRoute.withName('/'));
 
                     await context.read<AuthenticationService>().signOut();
                   },

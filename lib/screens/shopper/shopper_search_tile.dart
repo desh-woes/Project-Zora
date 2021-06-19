@@ -11,7 +11,7 @@ class ShopperSearchTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // Not yet Implemented
+        Navigator.pushNamed(context, "/displayProductPage", arguments: product);
       },
       child: Container(
         margin: EdgeInsets.only(top: 20),

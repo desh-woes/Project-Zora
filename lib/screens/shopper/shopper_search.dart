@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -29,8 +30,7 @@ class ShopperSearch extends StatelessWidget {
                     "images/switch_to_shopper.svg",
                   ),
                   onPressed: () {
-                    Navigator.of(context)
-                        .pushNamedAndRemoveUntil("/", ModalRoute.withName('/'));
+                    Navigator.of(context).popUntil(ModalRoute.withName('/'));
                   },
                 ),
               ],
@@ -97,22 +97,28 @@ class ShopperSearch extends StatelessWidget {
                   fontSize: 16,
                   fontWeight: FontWeight.w600),
             ),
-            // Padding(padding: const EdgeInsets.all(5)),
             if (products.length > 0)
-              MediaQuery.removePadding(
-                context: context,
-                removeTop: true,
-                child: ListView.builder(
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  itemCount: products.length,
-                  itemBuilder: (context, index) {
-                    return ShopperSearchTile(
-                      product: products[index],
-                    );
-                  },
-                ),
-              )
+              Container(
+                  constraints: BoxConstraints(
+                      minHeight: MediaQuery.of(context).size.height / 2,
+                      minWidth: double.infinity,
+                      maxHeight: MediaQuery.of(context).size.height / 2),
+                  child: MediaQuery.removePadding(
+                    context: context,
+                    removeTop: true,
+                    child: CupertinoScrollbar(
+                      child: ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        itemCount: products.length,
+                        itemBuilder: (context, index) {
+                          return ShopperSearchTile(
+                            product: products[index],
+                          );
+                        },
+                      ),
+                    ),
+                  ))
             else
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
