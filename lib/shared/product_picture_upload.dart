@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_native_image/flutter_native_image.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:project_zora/services/file_store_image.dart';
@@ -22,6 +23,14 @@ class ProductPicUpload extends StatefulWidget {
 class _ProductPicUploadState extends State<ProductPicUpload> {
   File _image;
 
+  Future<File> compressFile(File file) async {
+    File compressedFile = await FlutterNativeImage.compressImage(
+      file.path,
+      quality: 50,
+    );
+    return compressedFile;
+  }
+
   Future getImage() async {
     var pickedImage;
 
@@ -31,9 +40,15 @@ class _ProductPicUploadState extends State<ProductPicUpload> {
       print("Picking Error:" + e.code);
     }
 
+    File newImage;
+    if (pickedImage != null) {
+      newImage = File(pickedImage.path);
+      newImage = await compressFile(newImage);
+    }
+
     setState(() {
       if (pickedImage != null) {
-        _image = File(pickedImage.path);
+        _image = newImage;
       } else {
         print('No image selected.');
       }
