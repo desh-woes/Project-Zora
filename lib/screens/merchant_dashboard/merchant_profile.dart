@@ -26,7 +26,7 @@ class MerchantProfile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    "My shop",
+                    "Shop",
                     style: TextStyle(
                         fontSize: 24,
                         color: fontType,
@@ -57,7 +57,7 @@ class MerchantProfile extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             Text(
-              "My Products",
+              "Products",
               style: TextStyle(
                 color: fontType,
                 fontSize: 18,
@@ -73,7 +73,7 @@ class MerchantProfile extends StatelessWidget {
                 child: ViewProducts()),
             Padding(padding: const EdgeInsets.all(25)),
             Text(
-              "My Details",
+              "Shop Details",
               style: TextStyle(
                 color: fontType,
                 fontSize: 18,
