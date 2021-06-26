@@ -1,12 +1,22 @@
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_sms/flutter_sms.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:maps_launcher/maps_launcher.dart';
 import 'package:project_zora/models/product.dart';
 import 'package:project_zora/shared/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DisplayProductPage extends StatelessWidget {
+  void _sendSMS(String message, List<String> recipients) async {
+    String _result = await sendSMS(message: message, recipients: recipients)
+        .catchError((onError) {
+      print(onError);
+    });
+    print(_result);
+  }
+
   getImages(Product product) {
     var imageList = [];
 
@@ -207,6 +217,19 @@ class DisplayProductPage extends StatelessWidget {
                       fontSize: 14,
                     ),
                   ),
+                  Padding(padding: EdgeInsets.all(10)),
+                  Container(
+                    height: 50,
+                    child: ElevatedButton(
+                      style: buttonStyle,
+                      onPressed: () {
+                        _sendSMS(
+                            "Hello, I am interested in your product: ${product.productName}, and will like to chat further about this product",
+                            [product.productStoreNumber]);
+                      },
+                      child: Text("Message Vendor"),
+                    ),
+                  ),
                   Padding(padding: EdgeInsets.all(20)),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -252,6 +275,39 @@ class DisplayProductPage extends StatelessWidget {
                       fontSize: 16,
                     ),
                   ),
+                  Padding(padding: EdgeInsets.all(10)),
+                  Container(
+                    height: 50,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(Colors.white),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          )),
+                          elevation: MaterialStateProperty.resolveWith<double>(
+                            // As you said you dont need elevation. I'm returning 0 in both case
+                            (Set<MaterialState> states) {
+                              if (states.contains(MaterialState.disabled)) {
+                                return 0;
+                              }
+                              return 0; // Defer to the widget's default.
+                            },
+                          ),
+                          side: MaterialStateProperty.all(
+                              BorderSide(width: 1, color: thotBlue))),
+                      onPressed: () {
+                        MapsLauncher.launchQuery(product.productStoreLocation);
+                      },
+                      child: Text(
+                        "Get directions",
+                        style: TextStyle(color: thotBlue),
+                      ),
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.all(10)),
                 ],
               ),
             ),
